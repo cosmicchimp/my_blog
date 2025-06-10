@@ -1,0 +1,19 @@
+* {
+  gap:0;
+  padding:0;
+  margin:0;
+}
+body {
+  background-color:#FFFF;
+}
+
+.projectContainer {
+  display:flex;
+  flex-wrap:wrap;
+  background-color:#af46f0;
+  height:100%;
+  width:60%;
+}
+.projectBox {
+  background-color: white;
+}
