@@ -5,6 +5,7 @@ import {neon} from "@neondatabase/serverless"
 dotenv.config()
 const sql = neon(process.env.DATABASE_URL)
 const app = express.Router()
+app.use(express.urlencoded({ extended: true }));
 app.post("/", async (req, res) => {
     const {username, password} = req.body
     console.log(`${username} is creating an account`)
