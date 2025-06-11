@@ -4,10 +4,10 @@ import {neon} from "@neondatabase/serverless"
 import loginRoute from "./routes/loginRoute.js"
 import signupRoute from "./routes/signupRoute.js"
 import cors from 'cors';
-app.use(cors());
 dotenv.config()
 const sql = neon(process.env.DATABASE_URL)
 const app = express()
+app.use(cors());
 app.use(express.json());
 app.use("/login", loginRoute)
 app.post("/signup", signupRoute)
