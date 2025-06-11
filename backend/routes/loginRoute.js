@@ -9,14 +9,12 @@ const app = express.Router()
 app.use(express.urlencoded({ extended: true }));
 app.post("/", async (req, res) => {
     const {username, password} = req.body
-    const checkLogin = checkLogin(username)
-    if (!checkLogin.success) {
-        res.redirect("/login")
-        return res.json({success:false, message:"user not found"})
+    const loginChecked = await checkLogin(username)
+    if (!loginChecked.success) {
+      return res.status(401).json({ success: false, message: "Incorrect password" })
     }
-    res.redirect("/")
-    res.json({success:true, userInfo:checkLogin.user, message:"user found"})
     console.log(`${username} is logging in`)
+    return res.status(200).json({ success: true, userInfo: loginChecked.user, message: "Login successful" })
 })
 
 export default app
