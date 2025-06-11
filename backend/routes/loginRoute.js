@@ -8,7 +8,7 @@ const app = express.Router()
 app.use(express.urlencoded({ extended: true }));
 app.post("/", async (req, res) => {
     const {username, password} = req.body
-        console.log(`${username} is logging in`)
+    console.log(`${username} is logging in`)
 })
 
 export default app

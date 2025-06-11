@@ -9,7 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/", async (req, res) => {
     const {username, password} = req.body
     console.log(`${username} is creating an account`)
-
 })
 
 export default app
