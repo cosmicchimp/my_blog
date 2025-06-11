@@ -2,7 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import bcrypt from "bcrypt"
 import {neon} from "@neondatabase/serverless"
-import checkLogin from "../middleware/checkLogin"
+import checkLogin from "../middleware/checkLogin.js"
 dotenv.config()
 const sql = neon(process.env.DATABASE_URL)
 const app = express.Router()
