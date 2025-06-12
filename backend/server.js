@@ -8,6 +8,7 @@ import cors from 'cors';
 dotenv.config()
 const sql = neon(process.env.DATABASE_URL)
 const app = express()
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 app.use("/login", loginRoute)
