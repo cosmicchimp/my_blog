@@ -12,10 +12,11 @@ app.post("/", async (req, res) => {
     const crypt = await bcrypt.hash(password, 6)
     await sql`INSERT INTO users(username, password) VALUES (${username}, ${crypt})`
     console.log(`${username} is creating an account`)
-    return res.status(500).redirect("/?signup=success")
+    return res.redirect("/?signup=success")
     }
     catch (e) {
         console.log("Error in signup route ", e)
+        res.redirect("/signup?signup=fail")
     }
 })
 

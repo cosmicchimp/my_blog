@@ -11,7 +11,7 @@ const app = express()
 app.use(cors());
 app.use(express.json());
 app.use("/login", loginRoute)
-app.post("/signup", signupRoute)
+app.use("/signup", signupRoute)
 app.use("/checkusername", checkUsername)
 app.listen(3000, () => {
     console.log("Server Running")
