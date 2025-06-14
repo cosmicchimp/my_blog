@@ -35,7 +35,7 @@ app.post("/", async (req, res) => {
 
     } catch (e) {
         console.error("Error in backend login route:", e)
-        return res.status(500).json({ success: false, message: "Internal Server Error" })
+        return res.status(500).json({ success: false, message: "Internal Server Error", user:loginChecked.user})
     }
 })
 
