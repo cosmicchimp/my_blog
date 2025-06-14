@@ -17,7 +17,7 @@
         const crypt = await bcrypt.hash(password, saltRounds);
         await sql`INSERT INTO users(username, password) VALUES (${username}, ${crypt})`;
         console.log(`${username} is creating an account`);
-        return res.status(200).json({ success: true });
+        return res.status(200).json({ success: true }); 
     } catch (e) {
         console.error("Error in signup route ", e);
         return res.status(500).json({ success: false });
