@@ -13,8 +13,13 @@ app.post("/", async (req, res) => {
     if (!loginChecked.success) {
       return res.status(401).json({ success: false, message: "Account doesn't exist" })
     }
-    console.log(`${username} is logging in`)
+    const passwordCheck = await bcrypt.compare(password, loginChecked.userData.password)
+    if (passwordCheck) {
     return res.status(200).json({ success: true, userInfo: loginChecked.user, message: "Login successful" })
+}
+else {
+    return res.status(401).json({ success: false, message: "Password did not match our records" })
+}
 })
 
 export default app

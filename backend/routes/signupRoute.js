@@ -15,9 +15,7 @@
         const { username, password } = req.body;
         const saltRounds = 10;
         const crypt = await bcrypt.hash(password, saltRounds);
-
         await sql`INSERT INTO users(username, password) VALUES (${username}, ${crypt})`;
-
         console.log(`${username} is creating an account`);
         return res.status(200).json({ success: true });
     } catch (e) {
