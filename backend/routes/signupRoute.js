@@ -14,14 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/", async (req, res) => {
   try {
     const { username, password } = req.body;
-
-    if (!username || typeof username !== "string") {
-      return res.status(400).send("Username missing or invalid");
-    }
-    if (!password || typeof password !== "string") {
-      return res.status(400).send("Password missing or invalid");
-    }
-
     const saltRounds = 10;
     const crypt = await bcrypt.hash(password, saltRounds);
 
