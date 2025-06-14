@@ -11,7 +11,7 @@ app.post("/", async (req, res) => {
     const {username, password} = req.body
     const loginChecked = await checkLogin(username)
     if (!loginChecked.success) {
-      return res.status(401).json({ success: false, message: "Incorrect password" })
+      return res.status(401).json({ success: false, message: "Account doesn't exist" })
     }
     console.log(`${username} is logging in`)
     return res.status(200).json({ success: true, userInfo: loginChecked.user, message: "Login successful" })
