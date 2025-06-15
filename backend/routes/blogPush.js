@@ -11,7 +11,7 @@ app.post("/", async (req, res) => {
         const {blogContent, blogAuthor, blogTitle} = req.body
         if (!blogContent || !blogAuthor || !blogTitle) {
             return res.status(400).json({ success: false, message: "Missing required fields." })
-        }
+        }   
         await sql`INSERT INTO blogs (author, blog_content, blog_title) VALUES (${blogAuthor},${blogContent},${blogTitle})`
         return res.status(200).json({success:true, message:"Post successfully created"})
     }

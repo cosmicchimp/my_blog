@@ -3,14 +3,11 @@ import dotenv from "dotenv"
 import bcrypt from "bcrypt"
 import { neon } from "@neondatabase/serverless"
 import checkLogin from "../middleware/checkLogin.js"
-
 dotenv.config()
 const sql = neon(process.env.DATABASE_URL)
 const app = express.Router()
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
 app.post("/", async (req, res) => {
     try {
         console.log("LOGIN BODY RECEIVED:", req.body) // for debugging
