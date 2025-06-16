@@ -16,6 +16,10 @@ app.use("/login", loginRoute)
 app.use("/signup", signupRoute)
 app.use("/checkusername", checkUsername)
 app.use("/blogPush", blogPush)
+app.get("/blogPull", async (req, res) => {
+    const blogs = await sql`SELECT * FROM blogs`
+    res.json(blogs)
+})
 app.listen(3000, () => {
     console.log("Server Running")
 })
