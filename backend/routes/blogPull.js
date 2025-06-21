@@ -1,6 +1,16 @@
-export default async function blogPull() {
-    try {}
-    catch (e) {
-        console.log("error in blog pull backend: ", e)
+import express from "express"
+import dotenv from "dotenv"
+import {neon} from "@neondatabase/serverless"
+dotenv.config()
+const sql = neon(process.env.DATABASE_URL)
+const app = express.Router()
+app.post("/", async (req, res) => {
+    try {
+        const response = await sql`SELECT * FROM blogs`
+        console.log(response)
     }
-} 
+    catch (e) {
+        console.log('Error in blogPull: ', e)
+    }
+})
+export default app

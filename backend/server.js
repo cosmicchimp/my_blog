@@ -5,6 +5,7 @@ import loginRoute from "./routes/loginRoute.js"
 import signupRoute from "./routes/signupRoute.js"
 import checkUsername from "./routes/checkUsername.js"
 import blogPush from "./routes/blogPush.js"
+import blogPull from "./routes/blogPull.js"
 import cors from 'cors';
 dotenv.config()
 const sql = neon(process.env.DATABASE_URL)
@@ -16,10 +17,7 @@ app.use("/login", loginRoute)
 app.use("/signup", signupRoute)
 app.use("/checkusername", checkUsername)
 app.use("/blogPush", blogPush)
-app.get("/blogPull", async (req, res) => {
-    const blogs = await sql`SELECT * FROM blogs`
-    res.json(blogs)
-})
+app.use("/blogPull", blogPull)
 app.listen(3000, () => {
     console.log("Server Running")
 })
