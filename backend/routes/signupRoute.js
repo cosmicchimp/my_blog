@@ -3,10 +3,8 @@
     import { neon } from "@neondatabase/serverless";
     import dotenv from "dotenv";
     dotenv.config();
-
     const sql = neon(process.env.DATABASE_URL);
     const app = express.Router();   
-    
     // Add JSON parsing middleware here if main app doesn't have it
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
