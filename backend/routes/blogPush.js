@@ -9,11 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/", async (req, res) => {
     try{
           console.log("💥 /blogPush body:", req.body)
-        const {blogContent, blogAuthor, blogTitle, coverPhoto} = req.body
-        // if (!blogContent || !blogAuthor || !blogTitle) {
-        //     return res.status(400).json({ success: false, message: "Missing required fields." })
-        // }   
-        await sql`INSERT INTO blogs (author, blog_content, blog_title, cover_photo) VALUES (${blogAuthor},${blogContent},${blogTitle}, ${coverPhoto})`
+        const {blogContent, blogAuthor, blogTitle, blogThumbnail} = req.body
+        await sql`INSERT INTO blogs (author, blog_content, blog_title, blog_thumbnail) VALUES (${blogAuthor},${blogContent},${blogTitle}, ${coverPhoto}, ${blogThumbnail})`
         return res.status(200).json({success:true, message:"Post successfully created"})
     }
     catch (e) {
